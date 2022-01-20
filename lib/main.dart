@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter JavaScript Bridge'),
+      home: const MyHomePage(title: 'Flutter JavaScript Bridge Demo'),
     );
   }
 }
@@ -48,21 +48,18 @@ class _MyHomePageState extends State<MyHomePage> {
             //will break to another line on overflow
             direction: Axis.horizontal, //use vertical to show  on vertical axis
             children: <Widget>[
-              _fab(Icons.email, "{ \"from\" : \"Flutter\", \"data\" : \"Email\" }"), 
-              _fab(Icons.phone, "{ \"from\" : \"Flutter\", \"data\" : \"Phone\" }"), 
-              _fab(Icons.person, "{ \"from\" : \"Flutter\", \"data\" : \"Profile\" }")
-              ])
-        // floatingActionButton: FloatingActionButton(
-        //   child: const Icon(Icons.arrow_upward),
-        //   onPressed: () {
-        //     _controller.runJavascript('fromFlutter("From Flutter")');
-        //     // _controller.runJavascriptReturningResult('fromFlutter("From Flutter")');
-        //   },
-        // ),
-        );
+              _fab(Icons.email,
+                  "{ \"from\" : \"Flutter\", \"data\" : \"Email\" }"),
+              _fab(Icons.phone,
+                  "{ \"from\" : \"Flutter\", \"data\" : \"Phone\" }"),
+              _fab(Icons.person,
+                  "{ \"from\" : \"Flutter\", \"data\" : \"Profile\" }")
+            ]));
   }
 
-  Widget _fab([IconData? icon = Icons.plus_one, String message = "Hello from Flutter"]) {
+  Widget _fab(
+      [IconData? icon = Icons.plus_one,
+      String message = "Hello from Flutter"]) {
     return Container(
         margin: const EdgeInsets.all(10),
         child: FloatingActionButton(
@@ -70,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () {
             _controller.runJavascript("sendFromFlutter('$message')");
             // _controller.runJavascriptReturningResult('fromFlutter("From Flutter")');
-          },        
+          },
         ));
   }
 
