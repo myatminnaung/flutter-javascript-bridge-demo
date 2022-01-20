@@ -1,0 +1,70 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        background-color: linen;
+    }
+
+    h1 {
+        color: maroon;
+        margin-left: 40px;
+    }
+
+    .button {
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: zoom-in;
+    }
+
+    .button1 {        
+        background-color: #4CAF50;
+    }
+
+    /* Green */
+    .button2 {
+        background-color: #008CBA;
+    }
+
+    /* Blue */
+</style>
+<script>
+    function myFunction() {
+        let d = new Date();
+        document.getElementById("demo").innerHTML = "<h1>Today's date is " + d + "</h1>"
+    }
+
+    function sendFromFlutter(newTitle) {
+        document.getElementById("title").innerHTML = newTitle;
+        // sendBack();
+    }
+
+    function sendToFlutter(message) {
+        messageHandler.postMessage(message);
+    }
+</script>
+
+<head>
+    <title>Git Demo</title>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+
+<body>
+    <h1>This is HTML page.</h1>
+    <p id="title">HTML Ttitle</p>
+    <p id="demo">This is a paragraph</p>
+    <button type="button" onclick="myFunction()">Try it</button> <br />
+    <button type="button" class="button button1" onclick="sendToFlutter({ 'from' : 'JavaScript', 'message' : 'Hello' })">Send "Hello" To
+        Flutter</button>
+    <button type="button" class="button button2" onclick="sendToFlutter({ 'from' : 'JavaScript', 'message' : 'Bye' })">Send "Bye" to
+        Flutter</button>
+</body>
+
+</html>
