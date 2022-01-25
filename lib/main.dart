@@ -64,9 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
         margin: const EdgeInsets.all(10),
         child: FloatingActionButton(
           child: Icon(icon),
-          onPressed: () {
-            _controller.runJavascript("sendFromFlutter('$message')");
-            // _controller.runJavascriptReturningResult('fromFlutter("From Flutter")');
+          onPressed: () async {
+            // _controller.runJavascript("sendFromFlutter('$message')");
+            var result = await _controller.runJavascriptReturningResult("sendFromFlutter('$message')");
+            debugPrint("result from web is $result");
           },
         ));
   }
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
       zoomEnabled: true,
       javascriptChannels: {
         JavascriptChannel(
-            name: 'messageHandler',
+            name: 'flutterMessageHandler',
             onMessageReceived: (JavascriptMessage message) {
               debugPrint("message : $message");
               ScaffoldMessenger.of(context)

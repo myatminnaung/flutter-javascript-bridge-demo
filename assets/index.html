@@ -50,14 +50,18 @@
 }
 
 </style>
+
 <script>
+
     function sendFromFlutter(message) {
         document.getElementById("message").innerHTML = "Message : " + message;
+        return { "code" : 200, "message" : "success"};
     }
 
     function sendToFlutter(message) {
-        messageHandler.postMessage(message);
+      flutterMessageHandler.postMessage(message);      
     }
+
 </script>
 
 <head>
