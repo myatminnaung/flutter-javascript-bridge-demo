@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         JavascriptChannel(
             name: 'flutterMessageHandler',
             onMessageReceived: (JavascriptMessage message) {
-              debugPrint("message : $message");
+              debugPrint("message : ${message.message}");
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(message.message)));
               // _controller.runJavascript('fromFlutter("Echo : $message")');
